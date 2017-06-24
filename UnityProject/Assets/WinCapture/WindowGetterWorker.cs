@@ -13,9 +13,6 @@ namespace WinCapture
     {
         public System.Object windowLock;
 
-
-        System.Random random;
-
         Dictionary<string, IntPtr> tempWindowsFoundSoFar;
         Dictionary<string, bool> shouldKeep;
 
@@ -40,12 +37,9 @@ namespace WinCapture
 
             shouldKeep = new Dictionary<string, bool>(100);
 
-            random = new System.Random();
-
             taskbarHandle = Win32Funcs.FindWindow("Shell_TrayWnd", null);
 
             mapToString = new Dictionary<int, string>();
-            _shouldStop = false;
 
             lastTimeRan = Time.time;
         }
@@ -73,42 +67,36 @@ namespace WinCapture
 
         public void DoWork()
         {
-            if (Time.time - lastTimeRan > 0.1f)
+            thingsToAdd.Clear();
+            thingsToRemove.Clear();
+
+            shouldKeep.Clear();
+            AddWindows();
+
+            if (thingsToAdd.Count > 0 || thingsToRemove.Count > 0 || shouldKeep.Count != tempWindowsFoundSoFar.Count)
             {
-                lastTimeRan = Time.time;
-                //Thread.Sleep(100);
-
-                thingsToAdd.Clear();
-                thingsToRemove.Clear();
-
-                shouldKeep.Clear();
-                AddWindows();
-
-                if (thingsToAdd.Count > 0 || thingsToRemove.Count > 0 || shouldKeep.Count != tempWindowsFoundSoFar.Count)
+                lock (windowLock)
                 {
-                    lock (windowLock)
+                    for (int i = 0; i < thingsToAdd.Count; i++)
                     {
-                        for (int i = 0; i < thingsToAdd.Count; i++)
-                        {
-                            string intPtrString = IntPtrToString(thingsToAdd[i]);
-                            tempWindowsFoundSoFar[intPtrString] = thingsToAdd[i];
-                            shouldKeep[intPtrString] = true;
-                            myThingsToAdd.Add(thingsToAdd[i]);
-                        }
+                        string intPtrString = IntPtrToString(thingsToAdd[i]);
+                        tempWindowsFoundSoFar[intPtrString] = thingsToAdd[i];
+                        shouldKeep[intPtrString] = true;
+                        myThingsToAdd.Add(thingsToAdd[i]);
+                    }
 
-                        foreach (KeyValuePair<string, IntPtr> windowFound in tempWindowsFoundSoFar)
+                    foreach (KeyValuePair<string, IntPtr> windowFound in tempWindowsFoundSoFar)
+                    {
+                        if (!shouldKeep.ContainsKey(windowFound.Key))
                         {
-                            if (!shouldKeep.ContainsKey(windowFound.Key))
-                            {
-                                thingsToRemove.Add(windowFound.Value);
-                            }
+                            thingsToRemove.Add(windowFound.Value);
                         }
+                    }
 
-                        for (int i = 0; i < thingsToRemove.Count; i++)
-                        {
-                            tempWindowsFoundSoFar.Remove(IntPtrToString(thingsToRemove[i]));
-                            myThingsToRemove.Add(thingsToRemove[i]);
-                        }
+                    for (int i = 0; i < thingsToRemove.Count; i++)
+                    {
+                        tempWindowsFoundSoFar.Remove(IntPtrToString(thingsToRemove[i]));
+                        myThingsToRemove.Add(thingsToRemove[i]);
                     }
                 }
             }
@@ -258,14 +246,5 @@ namespace WinCapture
 
             return true;
         }
-
-
-        public void RequestStop()
-        {
-            _shouldStop = true;
-        }
-        // Volatile is used as hint to the compiler that this data
-        // member will be accessed by multiple threads.
-        private volatile bool _shouldStop;
     }
 }

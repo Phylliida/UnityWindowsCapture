@@ -9,7 +9,8 @@ namespace WinCapture
 {
     public class WindowCapture : IDisposable
     {
-        IntPtr hwnd;
+        public Win32Types.WindowInfo windowInfo;
+        public IntPtr hwnd;
         IntPtr hdc;
         IntPtr hDest;
         public int windowWidth;
@@ -29,6 +30,7 @@ namespace WinCapture
 
             // windowHandle is your window handle, IntPtr.Zero is the desktop
             hwnd = windowHandle;
+            windowInfo = new Win32Types.WindowInfo(hwnd);
 
             SetupWindowCapture();
 
@@ -85,7 +87,48 @@ namespace WinCapture
 
         }
 
+        public Texture2D GetWindowTexture(out bool didChange)
+        {
+            didChange = false;
+            int numBytesPerRow;
+            byte[] bitmapBytes = GetWindowContents(out numBytesPerRow);
+            if (bitmapBytes != null)
+            {
+                if (windowTexture == null)
+                {
+                    windowTexture = new Texture2D(windowWidth, windowHeight, TextureFormat.RGB24, false);
+                    didChange = true;
+                }
 
+                if (actualColorBuffer == null || actualColorBuffer.Length != windowWidth * windowHeight * 3)
+                {
+                    actualColorBuffer = new byte[windowWidth * windowHeight * 3];
+                }
+
+                int actualNumBytesPerRow = windowWidth * 3;
+                int curOffsetInSrc = 0;
+                int curOffsetInRes = 0;
+                for (int y = 0; y < windowHeight; y++)
+                {
+                    Buffer.BlockCopy(bitmapBytes, curOffsetInSrc, actualColorBuffer, curOffsetInRes, actualNumBytesPerRow);
+                    curOffsetInSrc += numBytesPerRow;
+                    curOffsetInRes += actualNumBytesPerRow;
+                }
+
+
+
+                windowTexture.LoadRawTextureData(actualColorBuffer);
+                windowTexture.Apply();
+
+            }
+
+            if (windowTexture != null && windowTexture.width != 0 && windowTexture.height != 0)
+            {
+                return windowTexture;
+            }
+
+            return null;
+        }
 
         public byte[] GetWindowContents(out int numBytesPerRow)
         {
@@ -169,7 +212,7 @@ namespace WinCapture
         public static IntPtr cursorHandle;
         
 
-        public static void SetCursorInfo()
+        public static void UpdateCursorInfo()
         {
 
             //int x = 0, y = 0;

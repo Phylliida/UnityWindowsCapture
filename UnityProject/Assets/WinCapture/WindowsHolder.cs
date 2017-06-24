@@ -71,14 +71,6 @@ namespace WinCapture
         public void UpdateWindows()
         {
             windowGetter.DoWork();
-            //IntPtr foregroundWindow = BaseManager.foregroundWindow;
-            //string foregroundWindowString = IntPtrToString(foregroundWindow);
-            //if (windows.ContainsKey(foregroundWindowString) &&
-            //    windows[foregroundWindowString].windowObject.GetComponent<Win32dialogBoxGameObject>() == null)
-            //{
-            //    foregroundWindowThing = windows[foregroundWindowString];
-            //}
-
             List<IntPtr> actualThingsToAdd = new List<IntPtr>(10);
             List<IntPtr> actualThingsToRemove = new List<IntPtr>(10);
 
@@ -177,6 +169,7 @@ namespace WinCapture
 
                 if (windows.ContainsKey(hwndString))
                 {
+                    windows.Remove(hwndString);
                     if (windowTypes[hwndString] == WindowType.Window)
                     {
                         if (OnRemoveWindow != null)
@@ -194,7 +187,7 @@ namespace WinCapture
 
 
                     /////if (windowRemoving.foregroundWindowThing != null && windowRemoving.foregroundWindowThing.hwnd == windowGetter.taskbarHandle)
-                    ////{ TODO - what is this? ah dialog box stuff
+                    ////{ 
                     //windowRemoving.numChancesLeft -= 1;
                     //if (windowRemoving.numChancesLeft == 0) {
                     //windows.Remove (hwndString);
