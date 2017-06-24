@@ -1,0 +1,23 @@
+C:\Users\Danielle\Desktop\Dani\Programming\Unity\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\WindowRenderCS.dll
+C:\Users\Danielle\Desktop\Dani\Programming\Unity\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\WindowRenderCS.pdb
+C:\Users\Danielle\Desktop\Dani\Programming\Unity\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Debug\WindowRenderCS.dll
+C:\Users\Danielle\Desktop\Dani\Programming\Unity\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Debug\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Debug\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Debug\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Debug\WindowRenderCS.csprojResolveAssemblyReference.cache
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\mscorlib.dll
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\sortkey.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\sorttbls.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\big5.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\bopomofo.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\ksc.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\prc.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\prcp.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\xjis.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\normidna.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\normnfc.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\normnfd.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\normnfkc.nlp
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Debug\normnfkd.nlp

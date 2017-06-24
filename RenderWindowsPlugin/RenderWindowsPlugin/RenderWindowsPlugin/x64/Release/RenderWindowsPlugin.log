@@ -1,0 +1,24 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  TestCPPLibrary.cpp
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(40): warning C4273: 'SetDebugFunction': inconsistent dll linkage
+  c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(33): note: see previous definition of 'SetDebugFunction'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(71): warning C4273: 'GetDesktopFrame': inconsistent dll linkage
+  c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(31): note: see previous definition of 'GetDesktopFrame'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(83): warning C4273: 'InitDeskDupl': inconsistent dll linkage
+  c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(29): note: see previous definition of 'InitDeskDupl'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(99): warning C4273: 'CleanupDeskDupl': inconsistent dll linkage
+  c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(30): note: see previous definition of 'CleanupDeskDupl'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(235): warning C4311: 'type cast': pointer truncation from 'IDXGIOutputDuplication *' to 'int'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(235): warning C4302: 'type cast': truncation from 'IDXGIOutputDuplication *' to 'int'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(241): warning C4311: 'type cast': pointer truncation from 'HMONITOR' to 'int'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(241): warning C4302: 'type cast': truncation from 'HMONITOR' to 'int'
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\TestCPPLibrary.h(531): warning C4018: '<': signed/unsigned mismatch
+     Creating library C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Release\..\..\..\..\..\Assets\Plugins\RenderWindowsPlugin.lib and object C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Release\..\..\..\..\..\Assets\Plugins\RenderWindowsPlugin.exp
+  Generating code
+c:\users\public\documents\unity projects\simplescreencapture\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(95): warning C4715: 'InitDeskDupl': not all control paths return a value
+  5 of 176 functions ( 2.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  RenderWindowsPlugin.vcxproj -> C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Release\..\..\..\..\..\Assets\Plugins\RenderWindowsPlugin.dll
+  RenderWindowsPlugin.vcxproj -> C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Release\..\..\..\..\..\Assets\Plugins\RenderWindowsPlugin.pdb (Full PDB)

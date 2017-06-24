@@ -1,0 +1,15 @@
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Release\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Release\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Release\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Release\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Release\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\bin\Release\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Release\WindowRenderCS.csprojResolveAssemblyReference.cache
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Release\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\WindowRenderCS\obj\Release\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\bin\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\RenderWindowsCS\bin\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\bin\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\RenderWindowsPlugin\bin\WindowRenderCS.pdb
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\Assets\Plugins\WindowRenderCS.dll
+C:\Users\Public\Documents\Unity Projects\SimpleScreenCapture\Assets\Plugins\WindowRenderCS.pdb

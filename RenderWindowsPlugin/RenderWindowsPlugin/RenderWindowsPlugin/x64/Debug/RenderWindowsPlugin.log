@@ -1,0 +1,11 @@
+﻿  TestCPPLibrary.cpp
+c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(42): warning C4273: 'InitDeskDupl': inconsistent dll linkage
+  c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(24): note: see previous definition of 'InitDeskDupl'
+c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(170): warning C4273: 'CleanupDeskDupl': inconsistent dll linkage
+  c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(25): note: see previous definition of 'CleanupDeskDupl'
+c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(192): warning C4273: 'GetDesktopFrame': inconsistent dll linkage
+  c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(26): note: see previous definition of 'GetDesktopFrame'
+c:\users\public\documents\unity projects\floating windows\renderwindowsplugin\renderwindowsplugin\renderwindowsplugin\testcpplibrary.h(449): warning C4018: '<': signed/unsigned mismatch
+     Creating library C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Debug\RenderWindowsPlugin.lib and object C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Debug\RenderWindowsPlugin.exp
+  RenderWindowsPlugin.vcxproj -> C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Debug\RenderWindowsPlugin.dll
+  RenderWindowsPlugin.vcxproj -> C:\Users\Public\Documents\Unity Projects\Floating Windows\RenderWindowsPlugin\RenderWindowsCS\WindowRenderCS\x64\Debug\RenderWindowsPlugin.pdb (Full PDB)
