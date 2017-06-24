@@ -1,5 +1,5 @@
 # UnityWindowsCapture
-A framework to capture individual windows or the entire desktop in Unity.
+A framework to capture individual windows or the entire desktop in Unity. This is a large part of the code I wrote to make [Multiscreens](http://store.steampowered.com/app/512400)
 
 Right now this uses GDI in an optimized way to capture things on windows 7+. As long as you are careful about your capturing rates you can run at 40-50 fps. I also have code for using the Desktop Capture API (Windows 8+) but I'm still cleaning that up then I'll add it here too.
 
