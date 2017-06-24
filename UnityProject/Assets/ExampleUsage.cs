@@ -6,14 +6,23 @@ using WinCapture;
 
 public class ExampleUsage : MonoBehaviour {
 
-    public Shader windowShader;
+    Shader windowShader;
+    Shader desktopShader;
     WindowCaptureManager captureManager;
 
     public Dictionary<IntPtr, WindowCapture> windowsRendering;
     public Dictionary<IntPtr, GameObject> windowObjects;
 
+
+    DesktopCapture desktopCapture1;
+    GameObject desktopObject;
+
     // Use this for initialization
     void Start () {
+
+        windowShader = Shader.Find("WinCapture/WindowShader");
+        desktopShader = Shader.Find("WinCapture/DesktopShader");
+
         windowsRendering = new Dictionary<IntPtr, WindowCapture>();
         windowObjects = new Dictionary<IntPtr, GameObject>();
         captureManager = new WindowCaptureManager();
@@ -21,8 +30,24 @@ public class ExampleUsage : MonoBehaviour {
         captureManager.OnRemoveWindow += OnRemoveWindow;
         lastUpdateTime = Time.time;
         lastPollWindowsTime = Time.time;
+
+
+
+        int displayNum = 0;
+        desktopCapture1 = new DesktopCapture(displayNum);
+
+        desktopObject = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        desktopObject.name = "desktop" + displayNum;
+        desktopObject.transform.GetComponent<Renderer>().material = new Material(desktopShader);
+        desktopObject.transform.localEulerAngles = new Vector3(90, 0, 0);
     }
-    
+
+    // You need to do this because the desktop capture API will only work if we are on the graphics thread
+    void OnPostRender()
+    {
+        desktopCapture1.OnPostRender();
+    }
+
 
     bool IsGoodWindow(WindowCapture window)
     {
@@ -68,6 +93,8 @@ public class ExampleUsage : MonoBehaviour {
     public float captureRateFps = 30;
     public float windowPollPerSecond = 2;
     public float windowScale = 0.001f;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -80,23 +107,41 @@ public class ExampleUsage : MonoBehaviour {
             lastUpdateTime = Time.time;
         }
 
+        bool didChange;
+
+
+        // Capture the desktop
+        Texture2D desktopTexture = desktopCapture1.GetWindowTexture(out didChange);
+
+        desktopObject.transform.localScale = new Vector3(desktopCapture1.desktopWidth * windowScale, 0.1f, desktopCapture1.desktopHeight * windowScale);
+        if (didChange)
+        {
+            desktopObject.transform.GetComponent<Renderer>().material.mainTexture = desktopTexture;
+        }
+
         // Gets information about position and icon of the cursor so you can render it onto the captured surfaces
         WindowCapture.UpdateCursorInfo();
 
+        // Capture each window
         foreach (IntPtr key in windowsRendering.Keys)
         {
             WindowCapture window = windowsRendering[key];
             GameObject windowObject = windowObjects[key];
 
-            bool didChange;
+            if (windowObject == null)
+            {
+                continue;
+            }
+
             Texture2D windowTexture = window.GetWindowTexture(out didChange);
             if (didChange)
             {
                 windowObject.GetComponent<Renderer>().material.mainTexture = windowTexture;
             }
-            windowObject.transform.localScale = new Vector3(window.windowWidth* windowScale, 0, window.windowHeight * windowScale);
+            windowObject.transform.localScale = new Vector3(window.windowWidth* windowScale, 0.1f, window.windowHeight * windowScale);
         }
 
+        // Poll for new windows
         if (Time.time - lastPollWindowsTime < 1.0f / windowPollPerSecond)
         {
             return;

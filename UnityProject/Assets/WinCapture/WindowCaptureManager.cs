@@ -31,7 +31,7 @@ namespace WinCapture
             for (int i = 0; i < monitorInfos.Count; i++)
             {
                 windowCapturers[monitorInfos[i].hwnd] = new WindowCapture(monitorInfos[i].hwnd, true);
-                windowCapturers[monitorInfos[i].hwnd].windowInfo.title = "desktop" + i;
+                windowCapturers[monitorInfos[i].hwnd].windowInfo.title = "desktopBitBlt" + i;
             }
         }
 

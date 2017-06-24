@@ -87,14 +87,21 @@ namespace WinCapture
 
         }
 
+        bool firstTime = true;
+
         public Texture2D GetWindowTexture(out bool didChange)
         {
             didChange = false;
+            if (firstTime)
+            {
+                firstTime = false;
+                didChange = true;
+            }
             int numBytesPerRow;
             byte[] bitmapBytes = GetWindowContents(out numBytesPerRow);
             if (bitmapBytes != null)
             {
-                if (windowTexture == null)
+                if (windowTexture == null || windowWidth != windowTexture.width || windowHeight != windowTexture.height)
                 {
                     windowTexture = new Texture2D(windowWidth, windowHeight, TextureFormat.RGB24, false);
                     didChange = true;
@@ -164,10 +171,19 @@ namespace WinCapture
                 return null;
             }
 
+            // If they resized the window we need to reinit the memory
+            if (windowWidth != windowRect.Width || windowHeight != windowRect.Height)
+            {
+                CleanupWindowCapture();
+                SetupWindowCapture();
+                windowWidth = windowRect.Width;
+                windowHeight = windowRect.Height;
+            }
 
 
             // Use the previously created device context with the bitmap
             Win32Funcs.SelectObject(hDest, curRenderingBitmap);
+
 
             // Copy from the screen device context to the bitmap device context
             if (isDesktop)

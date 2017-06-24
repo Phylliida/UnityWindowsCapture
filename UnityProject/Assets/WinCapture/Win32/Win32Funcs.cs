@@ -74,6 +74,10 @@ namespace WinCapture
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool BitBlt([In] IntPtr hdc, int nXDest, int nYDest, int nWidth, int nHeight, [In] IntPtr hdcSrc, int nXSrc, int nYSrc, Win32Consts.TernaryRasterOperations dwRop);
 
+        public static bool GetScreenRect(out Win32Types.RECT result)
+        {
+            return Win32Funcs.GetWindowRect(Win32Funcs.GetDesktopWindow(), out result);
+        }
 
         public static string GetWindowName(IntPtr hwnd)
         {
