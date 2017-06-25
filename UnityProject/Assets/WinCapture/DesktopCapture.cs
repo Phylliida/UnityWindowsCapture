@@ -39,11 +39,14 @@ namespace WinCapture
             Debug.Log("Fromcpp: " + str);
         }
 
+        WindowCapture mouseCapture;
 
         // Use this for initialization
         public DesktopCapture(int displayNum)
         {
             this.displayNum = displayNum;
+
+            mouseCapture = new WindowCapture(IntPtr.Zero, true, true);
 
             Win32Types.RECT screenRect;
             Win32Funcs.GetScreenRect(out screenRect);
@@ -131,9 +134,14 @@ namespace WinCapture
 
         bool firstTime = true;
 
+        Win32Types.RECT mouseRect;
+        byte[] cursorBytes;
         // Update is called once per frame
         public Texture2D GetWindowTexture(out bool didChange)
         {
+            bool didMouseChange;
+            cursorBytes = mouseCapture.GetAlignedBytes(out didMouseChange);
+            mouseRect = WindowCapture.cursorRect;
             didChange = false;
             if (firstTime)
             {
@@ -148,6 +156,36 @@ namespace WinCapture
                     {
                         //desktopTexture = new Texture2D(curFrameWidth, curFrameHeight, TextureFormat.ARGB32, false);
                         //testPointer = desktopTexture.GetNativeTexturePtr();
+                    }
+                    lock(actuallyGoLock)
+                    {
+                        if (cursorBytes != null)
+                        {
+                            for (int y = 0; y < mouseCapture.windowRect.Width; y++)
+                            {
+                                for (int x = 0; x < mouseCapture.windowRect.Height; x++)
+                                {
+                                    int sx = x + mouseRect.Left;
+                                    int sy = y + mouseRect.Top;
+                                    int pos = (x + y * mouseRect.Width)*3;
+                                    int sPos = (sx + sy * desktopWidth)*4;
+
+                                    if (sPos < 0 || sPos+3 > desktopFrameData.Length)
+                                    {
+                                        continue;
+                                    }
+
+                                    float mb = cursorBytes[pos];
+                                    float mg = cursorBytes[pos + 1];
+                                    float mr = cursorBytes[pos + 2];
+
+
+                                    desktopFrameData[sPos] = (byte)Mathf.Clamp(Mathf.Round(mb), 0, 255); // b
+                                    desktopFrameData[sPos + 1] = (byte)Mathf.Clamp(Mathf.Round(mg), 0, 255); // g
+                                    desktopFrameData[sPos + 2] = (byte)Mathf.Clamp(Mathf.Round(mr), 0, 255); // r
+                                }
+                            }
+                        }
                     }
                     desktopTexture.LoadRawTextureData(desktopFrameData);
                     desktopTexture.Apply();
@@ -164,6 +202,7 @@ namespace WinCapture
             {
                 cleanedUp = true;
                 WindowRenderCS.WindowRenderer.CleanupDeskDupl(displayNum);
+                mouseCapture.Dispose();
             }
         }
 

@@ -24,9 +24,13 @@ namespace WinCapture
 
         public Win32Types.RECT windowRect;
 
-        public WindowCapture(IntPtr windowHandle, bool isDesktop)
+        public bool onlyCaptureMouse;
+
+        public WindowCapture(IntPtr windowHandle, bool isDesktop, bool onlyCaptureMouse=false)
         {
             this.isDesktop = isDesktop;
+
+            this.onlyCaptureMouse = onlyCaptureMouse;
 
             // windowHandle is your window handle, IntPtr.Zero is the desktop
             hwnd = windowHandle;
@@ -39,6 +43,8 @@ namespace WinCapture
 
         void SetupWindowCapture()
         {
+            UpdateCursorInfo();
+
             // Get the device context
             if (isDesktop)
             {
@@ -71,6 +77,12 @@ namespace WinCapture
             windowWidth = windowRect.Width;
             windowHeight = windowRect.Height;
 
+            if (onlyCaptureMouse)
+            {
+                windowWidth = cursorRect.Width;
+                windowHeight = cursorRect.Height;
+            }
+
             // From http://stackoverflow.com/questions/7502588/createcompatiblebitmap-and-createdibsection-memory-dcs
             Win32Types.BitmapInfo bmi = new Win32Types.BitmapInfo();
             bmi.bmiHeader.Init();
@@ -89,7 +101,21 @@ namespace WinCapture
 
         bool firstTime = true;
 
+
+
         public Texture2D GetWindowTexture(out bool didChange)
+        {
+            byte[] textureBytes = GetAlignedBytes(out didChange);
+            if (windowTexture == null || windowWidth != windowTexture.width || windowHeight != windowTexture.height)
+            {
+                windowTexture = new Texture2D(windowWidth, windowHeight, TextureFormat.RGB24, false);
+                didChange = true;
+            }
+            windowTexture.LoadRawTextureData(textureBytes);
+            windowTexture.Apply();
+            return windowTexture;
+        }
+        public byte[] GetAlignedBytes(out bool didChange)
         {
             didChange = false;
             if (firstTime)
@@ -98,14 +124,10 @@ namespace WinCapture
                 didChange = true;
             }
             int numBytesPerRow;
+            WindowCapture.UpdateCursorInfo();
             byte[] bitmapBytes = GetWindowContents(out numBytesPerRow);
             if (bitmapBytes != null)
             {
-                if (windowTexture == null || windowWidth != windowTexture.width || windowHeight != windowTexture.height)
-                {
-                    windowTexture = new Texture2D(windowWidth, windowHeight, TextureFormat.RGB24, false);
-                    didChange = true;
-                }
 
                 if (actualColorBuffer == null || actualColorBuffer.Length != windowWidth * windowHeight * 3)
                 {
@@ -122,19 +144,12 @@ namespace WinCapture
                     curOffsetInRes += actualNumBytesPerRow;
                 }
 
-
-
-                windowTexture.LoadRawTextureData(actualColorBuffer);
-                windowTexture.Apply();
-
-            }
-
-            if (windowTexture != null && windowTexture.width != 0 && windowTexture.height != 0)
-            {
-                return windowTexture;
+                return actualColorBuffer;
+                
             }
 
             return null;
+            
         }
 
         public byte[] GetWindowContents(out int numBytesPerRow)
@@ -143,7 +158,7 @@ namespace WinCapture
             return bitmapBytes;
         }
 
-        byte[] GetWindowBitmapUsingBitBlt(out int numBytesPerRow)
+        public byte[] GetWindowBitmapUsingBitBlt(out int numBytesPerRow)
         {
             windowRect = new Win32Types.RECT();
             bool result;
@@ -161,6 +176,12 @@ namespace WinCapture
             {
                 // Get the size of the window
                 result = Win32Funcs.GetWindowRect(hwnd, out windowRect);
+            }
+
+            if (onlyCaptureMouse)
+            {
+                windowRect = cursorRect;
+                result = true;
             }
 
             if (!result)
@@ -181,21 +202,37 @@ namespace WinCapture
             }
 
 
+
             // Use the previously created device context with the bitmap
             Win32Funcs.SelectObject(hDest, curRenderingBitmap);
 
-
-            // Copy from the screen device context to the bitmap device context
-            if (isDesktop)
+            if (onlyCaptureMouse)
             {
-                Win32Funcs.BitBlt(hDest, 0, 0, windowRect.Width, windowRect.Height, hdc, windowRect.Left, windowRect.Top, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                if (isDesktop)
+                {
+                    Win32Funcs.BitBlt(hDest, 0,0, cursorRect.Width, cursorRect.Height, hdc, windowRect.Left, windowRect.Top, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                }
+                else
+                {
+                    Win32Funcs.BitBlt(hDest, cursorRect.Left, cursorRect.Height, cursorRect.Width, cursorRect.Height, hdc, 0,0, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                }
+                Win32Funcs.DrawIconEx(hDest, 1, 1, cursorHandle, cursorRect.Width, cursorRect.Height, 0, IntPtr.Zero, Win32Consts.DI_NORMAL);
             }
             else
             {
-                Win32Funcs.BitBlt(hDest, 0, 0, windowRect.Width, windowRect.Height, hdc, 0, 0, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                // Copy from the screen device context to the bitmap device context
+                if (isDesktop)
+                {
+                    Win32Funcs.BitBlt(hDest, 0, 0, windowRect.Width, windowRect.Height, hdc, windowRect.Left, windowRect.Top, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                }
+                else
+                {
+                    Win32Funcs.BitBlt(hDest, 0, 0, windowRect.Width, windowRect.Height, hdc, 0, 0, Win32Consts.TernaryRasterOperations.SRCCOPY);
+                }
+                Win32Funcs.DrawIconEx(hDest, cursorRect.Left, cursorRect.Top, cursorHandle, cursorRect.Width, cursorRect.Height, 0, IntPtr.Zero, Win32Consts.DI_NORMAL);
             }
 
-            Win32Funcs.DrawIconEx(hDest, cursorRect.Left, cursorRect.Top, cursorHandle, cursorRect.Width, cursorRect.Height, 0, IntPtr.Zero, Win32Consts.DI_NORMAL);
+
 
 
             Win32Types.BITMAP bitmap = new Win32Types.BITMAP();
@@ -230,7 +267,8 @@ namespace WinCapture
 
         public static void UpdateCursorInfo()
         {
-
+            // TODO - make sure everything here is cleaned up properly?
+            // I'm pretty sure it is but it is good to check
             //int x = 0, y = 0;
             //return CaptureCursor (ref x, ref y);
 
@@ -317,3 +355,4 @@ namespace WinCapture
         }
     }
 }
+ 
