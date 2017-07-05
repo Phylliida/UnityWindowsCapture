@@ -81,6 +81,7 @@
 -define:UNITY_TEAM_LICENSE
 -define:ENABLE_VSTU
 Assets/ExampleUsage.cs
+Assets/WinCapture/ChromiumCapture.cs
 Assets/WinCapture/DesktopCapture.cs
 Assets/WinCapture/Win32/Win32Consts.cs
 Assets/WinCapture/Win32/Win32Funcs.cs

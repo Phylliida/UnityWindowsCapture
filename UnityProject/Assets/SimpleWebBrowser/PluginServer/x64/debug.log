@@ -1,0 +1,18 @@
+[0227/161838:INFO:user_input_monitor_win.cc(168)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/161842:ERROR:audio_output_device.cc(369)] IO loop going away before the audio device has been stopped
+[0227/161842:ERROR:audio_input_device.cc(269)] IO loop going away before the input device has been stopped
+[0227/163741.322:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/163756.015:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/163812.534:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/163816.970:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/165104.252:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/165741.013:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170132.406:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170431.307:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170436.887:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170438.201:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170449.972:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170452.622:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170453.974:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170505.326:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170506.672:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)

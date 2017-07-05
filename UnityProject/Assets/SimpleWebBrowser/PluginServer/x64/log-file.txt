@@ -1,0 +1,32 @@
+2016-09-02 18:03:10,302 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2016-09-02 18:03:10,437 [1] INFO  SharedPluginServer.Program [(null)] - ARGS:
+2017-02-27 17:15:56,645 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-02-27 17:15:56,743 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:48184c0b-8d2c-4074-bc0b-1011dae9f8a3,port:8315
+2017-02-27 17:16:05,327 [7] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-02-27 17:16:07,998 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-02-27 17:16:08,062 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:9bb0b443-e767-4514-a92c-de677ad8941e,port:8135
+2017-02-27 17:16:11,097 [7] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-02-27 18:24:29,979 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-02-27 18:24:30,046 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:0fdef6cd-1bda-4815-84fa-aabf5c41bc1b,port:8008
+2017-02-27 18:24:35,168 [1] ERROR SharedPluginServer.Program [(null)] - CefRuntime return 0
+2017-02-27 18:24:35,803 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-02-27 18:24:35,863 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:0fdef6cd-1bda-4815-84fa-aabf5c41bc1b,port:8008
+2017-02-27 18:24:40,837 [7] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-02-27 18:24:55,005 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-02-27 18:24:55,072 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:e3e562f6-4ddb-424d-b290-4f2f7fb63fb8,port:8426
+2017-02-27 18:25:06,324 [9] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-07-05 12:33:57,276 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-07-05 12:33:57,317 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:500,height:500,url:http://www.google.com,memfile:d9d03a59-c2eb-43b9-99d5-f85d108e2383,port:8920
+2017-07-05 12:34:02,218 [8] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-07-05 12:34:10,529 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-07-05 12:34:10,559 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:1024,height:1024,url:http://google.com,memfile:5b4920e8-080e-4d8c-bc0a-f76f36c3a9e4,port:8576
+2017-07-05 12:34:19,207 [3] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-07-05 12:37:22,704 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-07-05 12:37:22,733 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:1024,height:1024,url:http://google.com,memfile:b283db3d-9c40-4ccc-af4a-eaf2b51383b9,port:8919
+2017-07-05 12:38:05,457 [3] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-07-05 12:38:51,998 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-07-05 12:38:52,027 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:1024,height:1024,url:http://google.com,memfile:64b5dd63-780d-44e3-8908-707cf8a007e4,port:8389
+2017-07-05 12:39:09,038 [8] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
+2017-07-05 12:56:31,442 [1] INFO  SharedPluginServer.Program [(null)] - ===============START================
+2017-07-05 12:56:31,470 [1] INFO  SharedPluginServer.Program [(null)] - Starting plugin, settings:width:1024,height:1024,url:http://google.com,memfile:f5286f45-2d79-43ae-b637-a546fc0b4b0c,port:8489
+2017-07-05 12:56:45,474 [8] INFO  SharedPluginServer.App [(null)] - ==============SHUTTING DOWN==========
