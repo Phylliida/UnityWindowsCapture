@@ -8,7 +8,6 @@ public class ExampleUsage : MonoBehaviour {
 
     Shader windowShader;
     Shader desktopShader;
-    Shader chromiumShader;
     WindowCaptureManager captureManager;
 
     public Dictionary<IntPtr, WindowCapture> windowsRendering;
@@ -18,8 +17,6 @@ public class ExampleUsage : MonoBehaviour {
     DesktopCapture desktopCapture1;
     GameObject desktopObject;
 
-
-    ChromiumCapture chromiumCapture;
     GameObject chromiumObject;
 
     // Use this for initialization
@@ -27,7 +24,6 @@ public class ExampleUsage : MonoBehaviour {
 
         windowShader = Shader.Find("WinCapture/WindowShader");
         desktopShader = Shader.Find("WinCapture/DesktopShader");
-        chromiumShader = Shader.Find("WinCapture/ChromiumShader");
 
         windowsRendering = new Dictionary<IntPtr, WindowCapture>();
         windowObjects = new Dictionary<IntPtr, GameObject>();
@@ -46,13 +42,6 @@ public class ExampleUsage : MonoBehaviour {
         desktopObject.name = "desktop" + displayNum;
         desktopObject.transform.GetComponent<Renderer>().material = new Material(desktopShader);
         desktopObject.transform.localEulerAngles = new Vector3(90, 0, 0);
-
-        chromiumCapture = new ChromiumCapture(1024, 1024, "http://google.com");
-
-        chromiumObject = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        chromiumObject.name = "chromium capture";
-        chromiumObject.transform.GetComponent<Renderer>().material = new Material(chromiumShader);
-        chromiumObject.transform.localEulerAngles = new Vector3(90, 0, 0);
     }
 
     // You need to do this because the desktop capture API will only work if we are on the graphics thread
@@ -113,18 +102,6 @@ public class ExampleUsage : MonoBehaviour {
     {
 
         bool didChange;
-        Texture2D chromiumTexture = chromiumCapture.GetChromiumTexture(out didChange);
-        if (didChange)
-        {
-            chromiumObject.GetComponent<Renderer>().material.mainTexture = chromiumTexture;
-        }
-        chromiumObject.transform.localScale = new Vector3(chromiumTexture.width * windowScale, 0.1f, chromiumTexture.height * windowScale);
-
-
-        if (Time.frameCount == 400)
-        {
-            chromiumCapture.SetUrl("http://reddit.com");
-        }
 
         if (Time.time - lastUpdateTime < 1.0f / captureRateFps)
         {
